@@ -2,10 +2,8 @@
 
 <table class="table">
   <tr>
+    <th>Avatar</th>
     <th>Full name</th>
-    <th>Birthday</th>
-    <th>Gender</th>
-    <th>Relation</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,12 +11,10 @@
 
 <% @people.each do |person| %>
   <tr>
-    <td><%= person.full_name %></td>
-    <td><%= person.birthday %></td>
-    <td><%= person.gender %></td>
-    <td><%= person.relation %></td>
-    <td><%= link_to 'Show', person %></td>
-    <td><%= link_to 'Edit', edit_person_path(person) %></td>
+    <td><%= image_tag person.avatar(:thumb) %></td>
+    <td><%= link_to person.full_name, person, class: 'fancybox'  %></td>
+    <td><%= link_to 'Show', person, class: 'fancybox' %></td>
+    <td><%= link_to 'Edit', edit_person_path(person), class: 'fancybox' %></td>
     <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
@@ -26,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Person', new_person_path , class: "btn-lg"%>
+<%= link_to 'New Person', new_person_path , class: "btn-lg fancybox"%>

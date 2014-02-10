@@ -1,13 +1,13 @@
 class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
+  
+  layout false
+
   def index
     @people = Person.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @people }
-    end
+    render layout: "application"
   end
 
   # GET /people/1
@@ -57,10 +57,11 @@ class PeopleController < ApplicationController
   # PUT /people/1.json
   def update
     @person = Person.find(params[:id])
-
+    logger.info("#{Time.now}:  =-==================================================")
+    logger.info("#{Time.now}:  #{@person.inspect}")
     respond_to do |format|
       if @person.update_attributes(params[:person])
-        format.html { redirect_to @person, notice: 'Person was successfully updated.' }
+        format.html { redirect_to  :back, notice: 'Person was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

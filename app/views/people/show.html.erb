@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <b>Avatar:</b>
+  <%= image_tag @person.avatar(:thumb) %>
+</p>
+
+<p>
   <b>Birthday:</b>
   <%= @person.birthday %>
 </p>
@@ -19,7 +24,3 @@
   <b>Relation:</b>
   <%= @person.relation %>
 </p>
-
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
