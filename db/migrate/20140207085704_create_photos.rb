@@ -7,7 +7,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_attachment :photos, :contentb
+    add_attachment :photos, :image
   end
   def self.down
     drop_table :photos

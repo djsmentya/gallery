@@ -1,5 +1,6 @@
 Gallery::Application.routes.draw do
   resources :people
+  resources :albums
   root :to => 'people#index'
 
   # The priority is based upon order of creation:

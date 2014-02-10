@@ -6,4 +6,5 @@ $().ready(function(){
     'height': '60%',
     'autoDimensions': false
   });
+  $('.bxslider').bxSlider();
 });
