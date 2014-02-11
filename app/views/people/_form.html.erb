@@ -23,11 +23,11 @@
     </div>
     <div class="field">
       <%= f.label :gender %><br />
-      <%= f.text_field :gender, required: true %>
+      <%= f.select :gender,["Male", "Female"], required: true %>
     </div>
     <div class="field">
       <%= f.label :relation %><br />
-      <%= f.text_field :relation, required: true %>
+      <%= f.select :relation, ["married", "single"], required: true %>
     </div>
     <div class="field">
       <%= f.label :relation %><br />

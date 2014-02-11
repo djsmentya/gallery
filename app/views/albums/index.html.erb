@@ -5,7 +5,7 @@
   <% else %>
     <ul class="bxslider">
       <% @album.photos.each do |photo| %>
-        <li><%= image_tag photo.image(:medium) %></li>
+        <li><%= image_tag photo.image%></li>
       <% end %>
     </ul>
   <% end %>
