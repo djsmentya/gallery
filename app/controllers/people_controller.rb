@@ -5,7 +5,7 @@ class PeopleController < ApplicationController
   layout false
 
   def index
-    @people = Person.all
+    @people = Person.order(:full_name).page(params[:page]).per(5)
 
     render layout: "application"
   end
