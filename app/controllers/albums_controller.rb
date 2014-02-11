@@ -2,12 +2,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @albums }
-    end
+    @album = Album.where(person_id: params[:person_id]).first
   end
 
   # GET /albums/1
@@ -24,7 +19,7 @@ class AlbumsController < ApplicationController
   # GET /albums/new
   # GET /albums/new.json
   def new
-    @album = Album.new
+    @album = Album.where(person_id: params[:person_id]).first
     @album.photos.build
 
     respond_to do |format|
@@ -41,14 +36,14 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.new(params[:album])
+    @album = Album.find(params[:id])
 
     respond_to do |format|
-      if @album.save
-        format.html { redirect_to @album, notice: 'Album was successfully created.' }
-        format.json { render json: @album, status: :created, location: @album }
+      if @album.update_attributes(params[:album])
+        format.html { redirect_to person_albums_path, notice: 'Album was successfully updated.' }
+        format.json { head :no_content }
       else
-        format.html { render action: "new" }
+        format.html { render action: "edit" }
         format.json { render json: @album.errors, status: :unprocessable_entity }
       end
     end
@@ -61,7 +56,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
-        format.html { redirect_to @album, notice: 'Album was successfully updated.' }
+        format.html { redirect_to person_albums_path, notice: 'Album was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

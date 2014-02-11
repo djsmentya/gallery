@@ -7,12 +7,14 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @people.each do |person| %>
   <tr>
     <td><%= image_tag person.avatar(:thumb) %></td>
     <td><%= link_to person.full_name, person, class: 'fancybox'  %></td>
+    <td><%= link_to 'Album', person_albums_path(person) %></td>
     <td><%= link_to 'Show', person, class: 'fancybox' %></td>
     <td><%= link_to 'Edit', edit_person_path(person), class: 'fancybox' %></td>
     <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
